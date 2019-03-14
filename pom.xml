@@ -10,7 +10,13 @@
 	<!-- TODO project name  -->
 	<name>quickstart</name>
 	<description></description>
-
+	<!-- imports spring.jars -->
+	<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.3.RELEASE</version>
+        <relativePath></relativePath>
+    </parent>
 	<!-- TODO
 		<organization>
 		<name>company name</name>
