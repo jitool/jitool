@@ -2,6 +2,7 @@ package com.dreamf.strategy.handler;
 
 import javax.annotation.PostConstruct;
 
+import com.dreamf.strategy.enums.BusinessIdEnum;
 import com.dreamf.strategy.manager.HandlerManager;
 
 /**
@@ -16,14 +17,14 @@ public interface Handler {
      */
     @PostConstruct
     default void init() {
-        Handler oldHandler = HandlerManager.getHandlers().put(getKey(),this);
+        Handler oldHandler = HandlerManager.getHandlers().put(getKey().getBusinessId(),this);
         if(null != oldHandler)
             throw new RuntimeException("your key have been repeated,the class is "+ this.getClass());
     }
     /**
      * @return the Business type
      */
-    Integer getKey();
+    BusinessIdEnum getKey();
     
     /**
      * your real handle
