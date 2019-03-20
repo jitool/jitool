@@ -5,25 +5,15 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.dreamf</groupId>
 	<artifactId>jitool</artifactId>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<!-- TODO project name  -->
 	<name>quickstart</name>
-	<description></description>
 	<!-- imports spring.jars -->
-	<parent>
-        <groupId>org.springframework.boot</groupId>
-        <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
-        <relativePath></relativePath>
-    </parent>
-	<!-- TODO
-		<organization>
-		<name>company name</name>
-		<url>company url</url>
-		</organization>
-	-->
-
+	<properties>
+		<wicket.version>1.3.2</wicket.version>
+		<jetty.version>6.1.4</jetty.version>
+		<spring.boot.version>2.0.4.RELEASE</spring.boot.version>
+	</properties>
 	<licenses>
 		<license>
 			<name>The Apache Software License, Version 2.0</name>
@@ -34,22 +24,16 @@
 
 	<dependencies>
 		<!--  WICKET DEPENDENCIES -->
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<scope>compile</scope>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.wicket</groupId>
 			<artifactId>wicket</artifactId>
 			<version>${wicket.version}</version>
 		</dependency>
-		<!-- OPTIONAL 
-			<dependency>
-			<groupId>org.apache.wicket</groupId>
-			<artifactId>wicket-extensions</artifactId>
-			<version>${wicket.version}</version>
-			</dependency>
-		-->
-
-		<!-- LOGGING DEPENDENCIES - LOG4J -->
-
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -70,8 +54,7 @@
 		 </dependency>
 
 		<!--  JETTY DEPENDENCIES FOR TESTING  -->
-
-		<dependency>
+		<!--<dependency>
 			<groupId>org.mortbay.jetty</groupId>
 			<artifactId>jetty</artifactId>
 			<version>${jetty.version}</version>
@@ -88,7 +71,7 @@
 			<artifactId>jetty-management</artifactId>
 			<version>${jetty.version}</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -125,12 +108,27 @@
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>8</source>
+					<target>8</target>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
-	<properties>
-		<wicket.version>1.3.2</wicket.version>
-		<jetty.version>6.1.4</jetty.version>
-	</properties>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-dependencies</artifactId>
+				<version>${spring.boot.version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 
 </project>
