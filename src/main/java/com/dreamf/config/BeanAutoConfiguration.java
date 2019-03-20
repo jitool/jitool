@@ -1,6 +1,8 @@
 package com.dreamf.config;
 
+import com.dreamf.designpattern.strategy.StrategyLoader;
 import com.dreamf.spring.SpringBeanUtils;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -12,10 +14,18 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 public class BeanAutoConfiguration {
+    private static final
 
     @Bean
     @ConditionalOnMissingBean(SpringBeanUtils.class)
     SpringBeanUtils springBeanUtils(){
          return new SpringBeanUtils();
+     }
+
+     @Bean
+     @ConditionalOnMissingBean(StrategyLoader.class)
+     StrategyLoader strategyLoader(){
+
+        return new StrategyLoader();
      }
 }
