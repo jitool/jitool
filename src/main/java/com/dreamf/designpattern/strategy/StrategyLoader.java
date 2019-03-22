@@ -20,6 +20,10 @@ public class StrategyLoader<T,R> {
      * @date: 2019/3/20 0020 12:49
      */
     public R handle(String businessType,T param){
+        //前置处理
+
+
+        //业务处理
         BaseHandlerInft<T,R> bean = (BaseHandlerInft<T,R>)SpringBeanUtils.getBean(businessType, BaseHandlerInft.class);
         if (bean==null){
             throw new RuntimeException("处理类不存在");

@@ -2,7 +2,6 @@ package com.dreamf.config;
 
 import com.dreamf.designpattern.strategy.StrategyLoader;
 import com.dreamf.spring.SpringBeanUtils;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,7 +24,6 @@ public class BeanAutoConfiguration {
      @Bean
      @ConditionalOnMissingBean(StrategyLoader.class)
      StrategyLoader strategyLoader(){
-
         return new StrategyLoader();
      }
 }
