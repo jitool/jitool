@@ -3,8 +3,11 @@ package com.dreamf.common;
 import java.lang.reflect.InvocationTargetException;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.beanutils.BeanUtilsBean;
-
+/**
+ * 
+ * @author lmj
+ *
+ */
 public class BeanUtil {
     
     /**
