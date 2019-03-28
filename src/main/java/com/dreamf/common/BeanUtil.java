@@ -8,7 +8,7 @@ import org.apache.commons.beanutils.BeanUtils;
  * @author lmj
  *
  */
-public class BeanUtil {
+public class BeanUtil extends BeanUtils{
     
     /**
      * class 必须要有构造方法
@@ -25,16 +25,16 @@ public class BeanUtil {
             throw new RuntimeException("the class : " + dest + " don`t have the default construst");
         }
         try {
-            BeanUtils.copyProperties(t, orig);
-        } catch (IllegalAccessException | InvocationTargetException e) {
-            // ignore
-        }
+			copyProperties(t, orig);
+		} catch (IllegalAccessException | InvocationTargetException e) {
+			// ignore
+		}
         return t;
     }
     
-    public static void copyProperties(Object dest, Object orig) {
+    public static void copy(Object dest, Object orig) {
         try {
-            BeanUtils.copyProperties(dest, orig);
+            copyProperties(dest, orig);
         } catch (IllegalAccessException | InvocationTargetException e) {
             // ignore
         }
